@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js Практика</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <button @click="message = 'Сообщение изменено!'">Изменить</button>
+        <input v-model="message" />
+        <p>Вы ввели: {{ message }}</p>
+        <ul>
+            <li v-for="(task, index) in tasks" :key="index">{{ task }}</li>
+        </ul>
+        <button @click="visible = !visible">Показать/Скрыть</button>
+        <p v-if="visible">Этот текст можно скрыть</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    message: 'Привет, Vue!',
+                    tasks: ['Выучить Vue', 'Сделать проект', 'Сдать практику'],
+                    visible: true
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
